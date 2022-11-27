@@ -2,6 +2,7 @@ import java.util.EmptyStackException;
 
 public class Hstack {
     private MyStack stackH [];
+
     public Hstack(){
         this.stackH = new MyStack[3];
     }
@@ -17,7 +18,9 @@ public class Hstack {
     public void move (int s){
         switch (s){
             case 1:
-                if(this.stackH[0].isEmpty())
+                if(this.stackH[0].isEmpty()){
+
+                }
                 this.stackH[1].push(this.stackH[0].pop());
                 break;
             case 2:
