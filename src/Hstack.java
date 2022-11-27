@@ -15,6 +15,18 @@ public class Hstack {
         return this.stackH[s].peek();
     }
     public void move (int s){
+        switch (s){
+            case 1:
+                if(this.stackH[0].isEmpty())
+                this.stackH[1].push(this.stackH[0].pop());
+                break;
+            case 2:
+                this.stackH[2].push(this.stackH[1].pop());
+                break;
+            case 3:
+                this.stackH[0].push(this.stackH[2].pop());
+                break;
+        }
 
     }
 }
