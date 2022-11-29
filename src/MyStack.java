@@ -1,33 +1,39 @@
-import java.util.Arrays;
+/*
+kevin sbarski 324589480
+amit  sherman 209284017
+ */
 import java.util.EmptyStackException;
 
 public class MyStack {
 
+    //Class attributes.
     private int stack[];
     private int flag;
 
+    //Default constructor,initialize flag(elements' counter to zero).
+    //Initialize stack attribute to array in length of 0.
     public MyStack(){
         this.flag = 0;
         this.stack = new int[0];
-        //System.out.println("the array has benn created,the first number in the array is: "+ stack[0]);
     }
 
-    public void flagCheck(){
-        if(this.flag<0) {flag = 0;}
-
-    }
-
+    //Boolean method to check if stack is empty.
+    //EX1
     boolean isEmpty(){
         if (this.flag > 0) {return false;}
         return true;
     }
 
+    //A method to insert a num into a stack
+    //EX2
     public void push(int num){
+        //If the stack is empty,it creates an array of length 1 and insert to it the number.
         if (this.isEmpty()){
             stack =new int[1];
             stack[0] = num;
             flag+=1;
         }
+        //Else it copies the first element to a new stack array and copy the rest of the elements.
         else {
              int copyStack [] = new int[stack.length+1];
              copyStack[0] = num;
@@ -37,40 +43,30 @@ public class MyStack {
              }
              this.stack = copyStack;
         }
-
     }
 
+    //A method that pop the first element out of the stack array.
+    //Return the popped element.
+    //EX3
     public int pop()throws EmptyStackException{
-        int popedNumber;
+        int poppedNumber;
         if(isEmpty()){
             throw new EmptyStackException();
         }
         else{
-           // System.out.println("before pop stack flag="+flag);
             flag-=1;
-            popedNumber = this.stack[0];
+            poppedNumber = this.stack[0];
             int copyStack [] = new int[stack.length-1];
             for(int i = 0; i < copyStack.length; i++){
                 copyStack[i] = stack[i+ 1];
             }
             stack = copyStack;
-            //System.out.println("after pop func flag="+flag);
-
             }
-        return popedNumber;
+        return poppedNumber;
     }
 
-//    public void setStack(MyStack stack) {
-//        this.stack = stack.getStack();
-//    }
-
-
-    public void setStack(MyStack stack) {
-        for(int i = 0; i<stack.getStack().length; i++){
-            this.push(stack.pop());
-        }
-    }
-
+    //A method which peek the first element of the stack array and return it.
+    //EX4
     public int peek()throws Exception {
 
             if (this.isEmpty()) {
@@ -81,19 +77,18 @@ public class MyStack {
 
     }
 
+    //A getter method for stack attribute.
     public int[] getStack() {
-//        for(int i=0; i<stack.length; i++){
-//            System.out.print("the elemnet is "+stack[i]);
-//
-//        }
-        //System.out.println();
         return stack;
     }
 
+    //A getter method for flag attribute.
     public int getFlag() {
         return flag;
     }
-    @Override
+
+    @Override//A method to print the stack.
+    //EX5
     public String toString()throws EmptyStackException {
         if(this.isEmpty()){
             System.out.println("Stack is empty.");
